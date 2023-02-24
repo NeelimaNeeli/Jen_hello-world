@@ -9,5 +9,11 @@ pipeline{
       }
      
     }
+    
+    stage("building the code"){
+      steps{
+        sh "mvn clean install"
+      }
+    }
   }
 }
