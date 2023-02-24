@@ -22,5 +22,20 @@ pipeline{
         sh "docker pull tomcat"
       }
     }
+    
+    stage("removing old & building docker image"){
+      steps{
+        sh "docker kill $(docker ps -q)"
+        sh "docker rmi tommy"
+        sh "docker build -t tommy /home/ubuntu/workspace/first/webapp/target"
+      }
+    }
+    
+    stage("deploying container"){
+      steps{
+        sh "docker run -d -p 8081:8080 --name tom tommy"
+      }
+    }
+    
   }
 }
