@@ -15,5 +15,11 @@ pipeline{
         sh "mvn clean install"
       }
     }
+    
+    stage("downloading tomcat docker image"){
+      steps{
+        sh "docker pull tomcat"
+      }
+    }
   }
 }
