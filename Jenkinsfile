@@ -25,7 +25,8 @@ pipeline{
     
     stage("removing old & building docker image"){
       steps{
-        sh "docker kill $(docker ps -q)"
+        sh "docker stop tom"
+        sh "docker rm tom"
         sh "docker rmi tommy"
         sh "docker build -t tommy /home/ubuntu/workspace/first/webapp/target"
       }
