@@ -18,6 +18,7 @@ pipeline{
     
     stage("downloading tomcat docker image"){
       steps{
+        sh "chmod 777 /var/run/docker.sock"
         sh "docker pull tomcat"
       }
     }
